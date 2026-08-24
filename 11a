@@ -1,0 +1,15 @@
+import math
+from itertools import permutations
+
+def min_npr(arr):
+    min_val, best_n, best_r = float('inf'), -1, -1
+    for n, r in permutations(arr, 2):
+        if r <= n:
+            val = math.perm(n, r)
+            if val < min_val:
+                min_val, best_n, best_r = val, n, r
+                
+    if min_val == float('inf'):
+        print(-1)
+    else:
+        print(f"n: {best_n}, r: {best_r}, Min nPr: {min_val}")
