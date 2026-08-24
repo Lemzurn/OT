@@ -1,0 +1,14 @@
+def min_cost_bl_to_tr(grid):
+    if not grid or not grid[0]: return 0
+    R, C = len(grid), len(grid[0])
+    dp = [[float('inf')] * C for _ in range(R)]
+    dp[R-1][0] = grid[R-1][0]
+    
+    for i in range(R-1, -1, -1):
+        for j in range(C):
+            if i == R-1 and j == 0: continue
+            from_bottom = dp[i+1][j] if i + 1 < R else float('inf')
+            from_left = dp[i][j-1] if j - 1 >= 0 else float('inf')
+            dp[i][j] = min(from_bottom, from_left) + grid[i][j]
+            
+    print(dp[0][C-1])
