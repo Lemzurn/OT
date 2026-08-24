@@ -13,3 +13,13 @@ def max_npr_limit(arr, K):
         print(-1)
     else:
         print(f"n: {best_n}, r: {best_r}, Max nPr: {max_val}")
+# Accept space-separated integers for an array
+user_input = input("Enter space-separated array elements: ")
+arr = list(map(int, user_input.split()))
+
+# For questions that require an extra parameter like K or T (uncomment if needed)
+# K = int(input("Enter target value (K/T): "))
+
+# Example function call:
+# result = equal_average_partition(arr)
+# print(result)
