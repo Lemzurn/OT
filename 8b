@@ -1,0 +1,24 @@
+from itertools import combinations
+
+def min_diff_partition(arr):
+    arr.sort()
+    n = len(arr)
+    total_sum = sum(arr)
+    best_diff = float('inf')
+    best_part1 = None
+    
+    for length in range(1, n):
+        for part1 in combinations(arr, length):
+            s1 = sum(part1)
+            s2 = total_sum - s1
+            diff = abs(s1 - s2)
+            if diff < best_diff:
+                best_diff = diff
+                best_part1 = list(part1)
+                
+    if best_part1 is None:
+        return -1
+    part2 = arr.copy()
+    for x in best_part1:
+        part2.remove(x)
+    return best_part1, part2
