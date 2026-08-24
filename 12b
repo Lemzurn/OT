@@ -1,0 +1,28 @@
+def min_flips_divisible_by_k(arr, K):
+    dp = {0: 0} # {remainder: min_flips}
+    for num in arr:
+        next_dp = {}
+        for rem, flips in dp.items():
+            r1 = (rem + num) % K
+            if r1 not in next_dp or next_dp[r1] > flips:
+                next_dp[r1] = flips
+                
+            r2 = (rem - num) % K
+            if r2 not in next_dp or next_dp[r2] > flips + 1:
+                next_dp[r2] = flips + 1
+        dp = next_dp
+        
+    if 0 in dp:
+        print(dp[0])
+    else:
+        print(-1)
+       
+user_input = input("Enter space-separated array elements: ")
+arr = list(map(int, user_input.split()))
+
+# For questions that require an extra parameter like K or T (uncomment if needed)
+# K = int(input("Enter target value (K/T): "))
+
+# Example function call:
+# result = equal_average_partition(arr)
+# print(result)
