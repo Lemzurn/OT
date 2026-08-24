@@ -20,3 +20,13 @@ def min_flips_closest_to_k(arr, K):
             min_flips = min(min_flips, flips)
             
     return min_flips if min_flips != float('inf') else -1
+# Accept space-separated integers for an array
+user_input = input("Enter space-separated array elements: ")
+arr = list(map(int, user_input.split()))
+
+# For questions that require an extra parameter like K or T (uncomment if needed)
+# K = int(input("Enter target value (K/T): "))
+
+# Example function call:
+# result = equal_average_partition(arr)
+# print(result)
