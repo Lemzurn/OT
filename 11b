@@ -1,0 +1,2 @@
+def min_ops_to_even(arr):
+    print(sum(1 for x in arr if x % 2 != 0))
