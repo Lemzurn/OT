@@ -13,3 +13,13 @@ def min_flips_for_min_non_negative_sum(arr):
     if not valid_sums:
         return -1
     return valid_sums[min(valid_sums.keys())]
+# Accept space-separated integers for an array
+user_input = input("Enter space-separated array elements: ")
+arr = list(map(int, user_input.split()))
+
+# For questions that require an extra parameter like K or T (uncomment if needed)
+# K = int(input("Enter target value (K/T): "))
+
+# Example function call:
+# result = equal_average_partition(arr)
+# print(result)
