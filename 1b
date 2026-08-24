@@ -1,0 +1,15 @@
+import math
+from itertools import permutations
+
+def max_ncr(arr):
+    max_val, best_n, best_r = -1, -1, -1
+    for n, r in permutations(arr, 2):
+        if r <= n:
+            val = math.comb(n, r)
+            if val > max_val:
+                max_val, best_n, best_r = val, n, r
+                
+    if max_val == -1:
+        print(-1)
+    else:
+        print(f"n: {best_n}, r: {best_r}, Max nCr: {max_val}")
