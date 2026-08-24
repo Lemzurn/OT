@@ -1,0 +1,15 @@
+def min_flips_for_min_non_negative_sum(arr):
+    dp = {0: 0} 
+    for num in arr:
+        next_dp = {}
+        for s, flips in dp.items():
+            if s + num not in next_dp or next_dp[s + num] > flips:
+                next_dp[s + num] = flips
+            if s - num not in next_dp or next_dp[s - num] > flips + 1:
+                next_dp[s - num] = flips + 1
+        dp = next_dp
+        
+    valid_sums = {s: f for s, f in dp.items() if s >= 0}
+    if not valid_sums:
+        return -1
+    return valid_sums[min(valid_sums.keys())]
