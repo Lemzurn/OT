@@ -13,13 +13,15 @@ def max_cost_bl_to_tr(grid):
             dp[i][j] = max(from_bottom, from_left) + grid[i][j]
             
     return dp[0][C-1]
-# Accept space-separated integers for an array
-user_input = input("Enter space-separated array elements: ")
-arr = list(map(int, user_input.split()))
+# Accept matrix dimensions and rows
+R = int(input("Enter the number of rows: "))
+print("Enter the matrix row by row (space-separated integers):")
 
-# For questions that require an extra parameter like K or T (uncomment if needed)
-# K = int(input("Enter target value (K/T): "))
+grid = []
+for _ in range(R):
+    row = list(map(int, input().split()))
+    grid.append(row)
 
 # Example function call:
-# result = equal_average_partition(arr)
+# result = max_cost_bl_to_tr(grid)
 # print(result)
