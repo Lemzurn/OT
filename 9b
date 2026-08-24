@@ -1,0 +1,22 @@
+def min_flips_closest_to_k(arr, K):
+    dp = {0: 0}
+    for num in arr:
+        next_dp = {}
+        for s, flips in dp.items():
+            if s + num not in next_dp or next_dp[s + num] > flips:
+                next_dp[s + num] = flips
+            if s - num not in next_dp or next_dp[s - num] > flips + 1:
+                next_dp[s - num] = flips + 1
+        dp = next_dp
+        
+    min_diff = float('inf')
+    min_flips = float('inf')
+    for s, flips in dp.items():
+        diff = abs(s - K)
+        if diff < min_diff:
+            min_diff = diff
+            min_flips = flips
+        elif diff == min_diff:
+            min_flips = min(min_flips, flips)
+            
+    return min_flips if min_flips != float('inf') else -1
