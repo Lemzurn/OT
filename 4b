@@ -1,0 +1,14 @@
+def min_flips_for_exact_target(arr, K):
+    dp = {0: 0} # {current_sum: min_flips_count}
+    for num in arr:
+        next_dp = {}
+        for s, flips in dp.items():
+            # Keep positive (no flip)
+            if s + num not in next_dp or next_dp[s + num] > flips:
+                next_dp[s + num] = flips
+            # Flip sign (adds 1 to flip count)
+            if s - num not in next_dp or next_dp[s - num] > flips + 1:
+                next_dp[s - num] = flips + 1
+        dp = next_dp
+        
+    return dp.get(K, -1)
