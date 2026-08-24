@@ -12,3 +12,15 @@ def min_cost_bl_to_tr(grid):
             dp[i][j] = min(from_bottom, from_left) + grid[i][j]
             
     print(dp[0][C-1])
+# Accept matrix dimensions and rows
+R = int(input("Enter the number of rows: "))
+print("Enter the matrix row by row (space-separated integers):")
+
+grid = []
+for _ in range(R):
+    row = list(map(int, input().split()))
+    grid.append(row)
+
+# Example function call:
+# result = max_cost_bl_to_tr(grid)
+# print(result)
